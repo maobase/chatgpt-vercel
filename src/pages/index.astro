@@ -1,44 +1,38 @@
 ---
 import Layout from "~/layouts/Layout.astro"
-import Header from "~/components/Header.astro"
-import Main from "~/components/Main"
+import NavBar from "~/components/NavBar.astro"
+import HomeHero from "~/components/HomeHero.astro"
+import FeatureGrid from "~/components/FeatureGrid.astro"
+import SiteFooter from "~/components/SiteFooter.astro"
 import "~/styles/global.css"
 import "@unocss/reset/tailwind.css"
-import "katex/dist/katex.min.css"
-import "highlight.js/styles/atom-one-dark.css"
-import { parsePrompts } from "~/utils/parse"
-import { setting, message, resetContinuousDialogue } from "~/system"
-const prompts = parsePrompts()
-const defaultMessage = import.meta.env.DEFAULT_MESSAGE || message
-let defaultSetting = setting
-if (import.meta.env.DEFAULT_SETTING) {
-  try {
-    defaultSetting = {
-      ...setting,
-      ...JSON.parse(import.meta.env.DEFAULT_SETTING)
-    }
-  } catch (e) {
-    console.error("Error parsing DEFAULT_SETTING:", e)
-  }
-}
 
-const _reset = import.meta.env.RESET_CONTINUOUS_DIALOGUE_OPTION
+const pageTitle = "ChatGPT Vercel — 简洁的 ChatGPT Web UI"
+const description = "一个开箱即用、支持流式对话与 PWA 的 ChatGPT Web 前端，支持多 Key、密码保护与自托管。"
+const url = Astro.url.href
 ---
 
-<Layout title="ChatGPT">
-  <main class="before sm:pt-8em py-2em">
-    <Header />
-    <Main
-      env={{
-        defaultSetting,
-        defaultMessage,
-        resetContinuousDialogue:
-          _reset && _reset !== String(resetContinuousDialogue)
-            ? !resetContinuousDialogue
-            : resetContinuousDialogue
-      }}
-      prompts={prompts}
-      client:visible
-    />
+<Layout title={pageTitle}>
+  <Fragment slot="head">
+    <meta name="description" content={description} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content="/1024.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href={url} />
+    <link rel="prefetch" href="/chat" />
+  </Fragment>
+
+  <Fragment slot="skip">
+    <a href="#main" class="sr-only focus:block fixed top-2 left-2 z-100 bg-slate-9 text-white dark:bg-slate-7 dark:text-slate-1 px-3 py-2 rounded-md">跳转到主内容</a>
+  </Fragment>
+
+  <NavBar />
+  <main id="main" class="py-2em">
+    <HomeHero />
+    <FeatureGrid />
   </main>
+  <SiteFooter />
 </Layout>

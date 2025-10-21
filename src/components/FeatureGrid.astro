@@ -1,0 +1,40 @@
+---
+interface Feature {
+  icon: string
+  title: string
+  desc: string
+}
+
+const features: Feature[] = [
+  {
+    icon: "i-carbon-flash",
+    title: "流式对话",
+    desc: "支持 OpenAI 流式输出，响应迅速，体验顺滑。"
+  },
+  {
+    icon: "i-carbon-mobile-download",
+    title: "PWA 与离线",
+    desc: "可安装到桌面，移动端友好，自动更新。"
+  },
+  {
+    icon: "i-carbon-locked",
+    title: "私有部署",
+    desc: "支持密码/多 Key 管理与配额控制，安全可控。"
+  }
+]
+---
+
+<section aria-labelledby="features-title" class="px-2em py-4em">
+  <h2 id="features-title" class="sr-only">功能亮点</h2>
+  <div class="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto">
+    {features.map((f) => (
+      <article class="rounded-lg border border-slate-3 dark:border-slate-7 p-5 bg-white/60 dark:bg-slate-9/40" aria-labelledby={f.title}>
+        <div class="text-3xl mb-3 text-slate-8 dark:text-slate-2">
+          <i class={f.icon} aria-hidden="true"></i>
+        </div>
+        <h3 id={f.title} class="text-lg font-bold text-slate-7 dark:text-slate">{f.title}</h3>
+        <p class="mt-2 text-slate-6 dark:text-slate-4 text-sm leading-6">{f.desc}</p>
+      </article>
+    ))}
+  </div>
+</section>
