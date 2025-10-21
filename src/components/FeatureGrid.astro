@@ -30,7 +30,7 @@ const features: Feature[] = [
     {features.map((f) => (
       <article class="rounded-lg border border-slate-3 dark:border-slate-7 p-5 bg-white/60 dark:bg-slate-9/40" aria-labelledby={f.title}>
         <div class="text-3xl mb-3 text-slate-8 dark:text-slate-2">
-          <i class={f.icon}></i>
+          <i class={f.icon} aria-hidden="true"></i>
         </div>
         <h3 id={f.title} class="text-lg font-bold text-slate-7 dark:text-slate">{f.title}</h3>
         <p class="mt-2 text-slate-6 dark:text-slate-4 text-sm leading-6">{f.desc}</p>

@@ -21,11 +21,14 @@ const { title } = Astro.props as Props
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="theme-color" content="#f6f8fa" />
+    <meta name="theme-color" content="#16161a" media="(prefers-color-scheme: dark)" />
     <script src="/src/pwa.ts"></script>
     {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
     <slot name="head" />
   </head>
   <body>
+    <!-- 跳转到主内容的可访问性链接 -->
+    <slot name="skip" />
     <slot />
   </body>
 </html>

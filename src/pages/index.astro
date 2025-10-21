@@ -19,6 +19,14 @@ const url = Astro.url.href
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={url} />
+    <meta property="og:image" content="/1024.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href={url} />
+    <link rel="prefetch" href="/chat" />
+  </Fragment>
+
+  <Fragment slot="skip">
+    <a href="#main" class="sr-only focus:block fixed top-2 left-2 z-100 bg-slate-9 text-white dark:bg-slate-7 dark:text-slate-1 px-3 py-2 rounded-md">跳转到主内容</a>
   </Fragment>
 
   <NavBar />
