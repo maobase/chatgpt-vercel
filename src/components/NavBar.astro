@@ -1,0 +1,17 @@
+---
+import ThemeToggle from "~/components/ThemeToggle.astro"
+---
+
+<header role="banner" class="px-2em py-1em">
+  <nav aria-label="主导航" class="flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2 no-underline" aria-label="首页">
+      <span class="text-xl font-extrabold text-slate-7 dark:text-slate">ChatGPT</span>
+      <span class="text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r dark:from-yellow-300 from-yellow-600 dark:to-red-700 to-red-700">Vercel</span>
+    </a>
+    <div class="flex items-center gap-4">
+      <a href="/chat" class="text-slate-7 dark:text-slate hover:underline" aria-label="前往聊天">Chat</a>
+      <a href="https://github.com/ourongxing/chatgpt-vercel" target="_blank" rel="noopener" class="text-slate-7 dark:text-slate hover:underline" aria-label="GitHub 仓库">GitHub</a>
+      <ThemeToggle />
+    </div>
+  </nav>
+</header>
